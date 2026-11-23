@@ -1,8 +1,38 @@
-# LifeLens
+<div align="center">
+
+<img src="docs/readme/lifelens-hero.gif" alt="LifeLens: a wellness companion, with a gently floating companion illustration and connected daily signals" width="1080" />
+
+# Your day, through a clearer lens.
+
+**Track how you feel. Notice your patterns. Meet your MiniMe.**
+
+<p>
+  <img src="docs/readme/flutter.svg" alt="Flutter and Dart" />
+  <img src="docs/readme/firebase.svg" alt="Firebase" />
+  <img src="docs/readme/python.svg" alt="FastAPI" />
+  <img src="docs/readme/onnx.svg" alt="ONNX Runtime" />
+  <img src="docs/readme/status.svg" alt="In development" />
+</p>
+
+[Explore the features](#what-the-app-includes) &nbsp; · &nbsp; [Run locally](#local-setup) &nbsp; · &nbsp; [See the architecture](#architecture) &nbsp; · &nbsp; [Project boundaries](#current-boundaries)
+
+</div>
+
+---
+
+## A companion for everyday check-ins
 
 LifeLens is a Flutter wellness companion that brings mood, sleep, symptom, and exercise logs together around a customizable **MiniMe** avatar. The app uses recent check-ins to build personal insights, suggest activities, and provide a conversational companion. A Python FastAPI backend supports chat, recommendations, trend analysis, and optional retrieval from a Weaviate knowledge base.
 
 This repository contains the mobile app, backend services, bundled ONNX models, and experimental summarization and evaluation tools. It is a development project: some integrations need configuration, and some model pipelines are separate from the tracking screens currently exposed in the app.
+
+<img src="docs/readme/lifelens-flow.gif" alt="Illustrated workflow: check in, connect with MiniMe, reflect on patterns, and take a suggested step" width="1080" />
+
+### Built around you
+
+| Your daily check-in | Your MiniMe | Your next step |
+| :--- | :--- | :--- |
+| Log mood, sleep, symptoms, and exercise in one place. | Customize your companion and chat with context from recent logs. | Explore personal insights, activity suggestions, and community spheres. |
 
 ## What the app includes
 
@@ -43,6 +73,9 @@ flowchart TD
 
 The Docker Compose file also provisions PostgreSQL and Redis. Their presence in the development stack should not be read as evidence that every API route uses those services for persistence or caching.
 
+<details>
+<summary><strong>Explore the source tree</strong></summary>
+
 ## Repository map
 
 | Path | Purpose |
@@ -60,6 +93,10 @@ The Docker Compose file also provisions PostgreSQL and Redis. Their presence in 
 | [`backend/ml/summarization/`](backend/ml/summarization/) | Summarization training, inference, datasets, and evaluation tooling. |
 | [`scripts/run-dev.ps1`](scripts/run-dev.ps1) | Windows helper for starting the API and/or Flutter. |
 | [`docs/`](docs/) | Community setup and computation documentation. |
+
+</details>
+
+---
 
 ## Local setup
 
@@ -190,6 +227,9 @@ Gemma is separate from these bundled ONNX files. [`GemmaModelManager`](lib/servi
 
 The Flutter service locator still has placeholder Gemini and Weaviate credentials for direct client-side inference paths. Backend `.env` settings do **not** configure those Dart constants. The MiniMe backend client uses `LIFELENS_API_BASE_URL` separately. Keep production provider secrets on a server rather than embedding them in a distributed app.
 
+<details>
+<summary><strong>Browse the backend API capabilities</strong></summary>
+
 ## Backend capabilities
 
 See `/docs` on the running API for full request and response schemas.
@@ -204,6 +244,8 @@ See `/docs` on the running API for full request and response schemas.
 | `POST /api/v1/symptoms/batch-analyze` | Analyze multiple symptom inputs. |
 | `/api/v1/knowledge/*` | Add, retrieve, inspect, and delete knowledge-base content. |
 | `GET /api/v1/disclaimer` | Return the backend's informational-use disclaimer. |
+
+</details>
 
 ## Current boundaries
 
@@ -240,3 +282,14 @@ The summarization directory also contains evaluation contracts, rubrics, validat
 - [Computation proofs and equations](docs/COMPUTATION_PROOFS_AND_EQUATIONS.md)
 - [Summarization evaluation protocol](backend/ml/summarization/evaluation_protocol.md)
 - [Synthetic-data validation report](backend/ml/summarization/VALIDATION_REPORT.md)
+
+
+---
+
+<div align="center">
+
+**Small check-ins. A clearer picture.**
+
+[Back to the top](#your-day-through-a-clearer-lens)
+
+</div>
